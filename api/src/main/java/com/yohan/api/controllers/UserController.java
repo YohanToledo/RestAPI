@@ -1,5 +1,7 @@
 package com.yohan.api.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,5 +32,9 @@ public class UserController {
 		return userDto;	
 	}
 	
+	@GetMapping(value = "/all")
+	public List<UserDTO> findAll(){
+		return service.findAll();
+	}
 	
 }

@@ -1,5 +1,8 @@
 package com.yohan.api.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +39,18 @@ public class UserService {
 			repo.saveAndFlush(user);
 		}
 		
+	}
+	
+	
+	@SuppressWarnings("null")
+	@Transactional
+	public List<UserDTO> findAll(){
+		List<User> userList  = repo.findAll();
+		List<UserDTO> userDtoList = new ArrayList<>();
+		for(User user : userList) {
+			userDtoList.add(new UserDTO(user));
+		}
+		return userDtoList;
 	}
 	
 }
